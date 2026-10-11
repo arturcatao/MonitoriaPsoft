@@ -38,5 +38,14 @@ public class ProdutoCrudPadraoService implements ProdutoCrudService {
         produtoRepository.deleteById(id);
     }
 
+    @Override
+    public ProdutoResponseDto atualizarProduto(Long id, ProdutoPostPutDto produtoPostPutDto) {
+        Produto produto = modelMapper.map(produtoPostPutDto, Produto.class);
+        produto.setId(id);
 
+        produtoRepository.save(produto);
+
+        ProdutoResponseDto response = modelMapper.map(produto, ProdutoResponseDto.class);
+        return response;
+    }
 }

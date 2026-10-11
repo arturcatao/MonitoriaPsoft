@@ -36,7 +36,14 @@ public class ProdutoV1Controller {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> apagarProduto(@PathVariable Long id) {
+        produtoCrudService.apagarProduto(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProdutoResponseDto> atualizarProduto(@PathVariable Long id, @RequestBody ProdutoPostPutDto produtoPostPutDto) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(produtoCrudService.atualizarProduto(id, produtoPostPutDto));
+    }
 }

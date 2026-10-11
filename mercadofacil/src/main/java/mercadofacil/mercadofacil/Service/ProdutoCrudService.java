@@ -10,4 +10,5 @@ public interface ProdutoCrudService {
 
     List<ProdutoResponseDto> buscarTodosProdutos();
     void apagarProduto(Long id);
+    ProdutoResponseDto atualizarProduto(Long id, ProdutoPostPutDto produtoPostPutDto);
 }
