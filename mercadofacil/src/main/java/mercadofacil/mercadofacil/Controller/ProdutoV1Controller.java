@@ -34,5 +34,9 @@ public class ProdutoV1Controller {
                 .body(produtoCrudService.buscarTodosProdutos());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> apagarProduto(@PathVariable Long id) {
+        return ResponseEntity.noContent().build();
+    }
 
 }

@@ -32,4 +32,11 @@ public class ProdutoCrudPadraoService implements ProdutoCrudService {
                 .map(produto -> modelMapper.map(produto, ProdutoResponseDto.class))
                 .toList();
     }
+
+    @Override
+    public void apagarProduto(Long id) {
+        produtoRepository.deleteById(id);
+    }
+
+
 }
