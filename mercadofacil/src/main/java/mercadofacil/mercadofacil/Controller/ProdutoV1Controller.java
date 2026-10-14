@@ -19,31 +19,5 @@ public class ProdutoV1Controller {
     @Autowired
     ProdutoCrudService produtoCrudService;
 
-    @PostMapping("")
-    public ResponseEntity<ProdutoResponseDto> criarProduto(
-            @RequestBody @Valid ProdutoPostPutDto produtoPostPutDto) {
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(produtoCrudService.criarProduto(produtoPostPutDto));
-    }
 
-    @GetMapping("")
-    public ResponseEntity<List<ProdutoResponseDto>> buscarTodosProdutos() {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(produtoCrudService.buscarTodosProdutos());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> apagarProduto(@PathVariable Long id) {
-        produtoCrudService.apagarProduto(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ProdutoResponseDto> atualizarProduto(@PathVariable Long id, @RequestBody ProdutoPostPutDto produtoPostPutDto) {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(produtoCrudService.atualizarProduto(id, produtoPostPutDto));
-    }
 }

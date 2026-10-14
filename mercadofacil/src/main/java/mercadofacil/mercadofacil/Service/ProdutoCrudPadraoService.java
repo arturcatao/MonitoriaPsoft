@@ -19,33 +19,5 @@ public class ProdutoCrudPadraoService implements ProdutoCrudService {
     @Autowired
     ProdutoRepository produtoRepository;
 
-    @Override
-    public ProdutoResponseDto criarProduto(ProdutoPostPutDto produtoPostPutDto) {
-        Produto produto = modelMapper.map(produtoPostPutDto, Produto.class);
-        return modelMapper.map(produtoRepository.save(produto), ProdutoResponseDto.class);
-    }
-
-    @Override
-    public List<ProdutoResponseDto> buscarTodosProdutos() {
-        return produtoRepository.findAll()
-                .stream()
-                .map(produto -> modelMapper.map(produto, ProdutoResponseDto.class))
-                .toList();
-    }
-
-    @Override
-    public void apagarProduto(Long id) {
-        produtoRepository.deleteById(id);
-    }
-
-    @Override
-    public ProdutoResponseDto atualizarProduto(Long id, ProdutoPostPutDto produtoPostPutDto) {
-        Produto produto = modelMapper.map(produtoPostPutDto, Produto.class);
-        produto.setId(id);
-
-        produtoRepository.save(produto);
-
-        ProdutoResponseDto response = modelMapper.map(produto, ProdutoResponseDto.class);
-        return response;
-    }
+    
 }
